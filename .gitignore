@@ -1,3 +1,9 @@
+# Terraform
+*.tfvars
+*.tfbackend
+.terraform.lock.hcl
+.terraform/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

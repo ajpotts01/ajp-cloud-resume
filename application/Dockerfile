@@ -6,6 +6,8 @@ COPY . /application
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-EXPOSE 8000
+EXPOSE 8080
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+ENV ENVIRONMENT=GCR
+
+CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8080"]
