@@ -27,8 +27,8 @@ SECRET_KEY = "django-insecure-n6_^9*jpn6(7in6!t@%-cveca^1i*o54=rj(wkmrz+b8vjzvos
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = []
-#CSRF_TRUSTED_ORIGINS = []
+# ALLOWED_HOSTS = []
+# CSRF_TRUSTED_ORIGINS = []
 
 # https://cloud.google.com/python/django/run#csrf_configurations
 ALLOWED_HOST_URLS = os.getenv("ALLOWED_HOST_URLS", None)
@@ -40,7 +40,7 @@ if ALLOWED_HOST_URLS:
     else:
         # Single item
         ALLOWED_HOST_URLS = [ALLOWED_HOST_URLS]
-    
+
     ALLOWED_HOSTS = [urlparse(x).netloc for x in ALLOWED_HOST_URLS]
     CSRF_TRUSTED_ORIGINS = [x for x in ALLOWED_HOST_URLS]
     SECURE_SSL_REDIRECT = True
