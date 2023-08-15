@@ -17,8 +17,8 @@ module "service-account" {
 }
 
 module "load-balancer" {
-  source     = "./load_balancer"
-  app_name   = var.app_name
+  source      = "./load_balancer"
+  app_name    = var.app_name
   domain_name = var.domain_name
-  depends_on = [module.service-account]
+  depends_on  = [module.service-account]
 }
