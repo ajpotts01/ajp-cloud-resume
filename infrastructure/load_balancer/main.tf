@@ -7,7 +7,9 @@ resource "google_compute_managed_ssl_certificate" "lb_ssl_certificate" {
   description = "SSL certificate for load balancer"
 
   managed {
-    domains = ["ajpcloudblog.com."]
+    # Sticking a www in front of the domain name - this will fix things so
+    # both non-www and www URLs work.
+    domains = ["www.${var.domain_name}", var.domain_name]
   }
 }
 
@@ -20,18 +22,40 @@ resource "google_compute_global_address" "cloud_resume_lb_address" {
   name         = "${var.app_name}-lb-address"
   address_type = "EXTERNAL"
   ip_version   = "IPV4"
-  #project      = var.project_id
 }
 
 resource "google_dns_managed_zone" "cloud_resume_dns" {
   name        = "${var.app_name}-dns"
-  dns_name    = "ajpcloudblog.com." # TODO: Turn into var
+  dns_name    = "${var.domain_name}."
   description = "Cloud Resume DNS Zone"
-  #project     = var.project_id
 
   labels = {
     created_by = "terraform"
   }
+}
+
+resource "google_dns_record_set" "cloud_resume_lb_dns" {
+  name         = google_dns_managed_zone.cloud_resume_dns.dns_name
+  managed_zone = google_dns_managed_zone.cloud_resume_dns.name
+
+  type = "A"
+  ttl  = 300
+
+  rrdatas = [
+    google_compute_global_address.cloud_resume_lb_address.address
+  ]
+}
+
+resource "google_dns_record_set" "cloud_resume_lb_dns_www" {
+  name         = "www.${google_dns_managed_zone.cloud_resume_dns.dns_name}"
+  managed_zone = google_dns_managed_zone.cloud_resume_dns.name
+
+  type = "A"
+  ttl  = 300
+
+  rrdatas = [
+    google_compute_global_address.cloud_resume_lb_address.address
+  ]
 }
 
 #####
@@ -103,22 +127,19 @@ resource "google_compute_url_map" "frontend_redirect" {
 }
 
 resource "google_compute_url_map" "backend_redirect" {
-  #project         = var.project_id
   name            = "${var.app_name}-https-lb-backend-redirect"
   default_service = google_compute_backend_service.backend_service.id
 }
 
 resource "google_compute_target_http_proxy" "default" {
-  #project = var.project_id
   name    = "${var.app_name}-http-proxy"
   url_map = google_compute_url_map.backend_redirect.id
 }
 
 resource "google_compute_target_https_proxy" "target_proxy" {
-  name = "${var.app_name}-lb-target-proxy"
-  #project          = var.project_id
+  name             = "${var.app_name}-lb-target-proxy"
   quic_override    = "NONE"
-  ssl_certificates = [google_compute_managed_ssl_certificate.lb_ssl_certificate.id]
+  ssl_certificates = [google_compute_managed_ssl_certificate.lb_ssl_certificate.name]
   url_map          = google_compute_url_map.backend_redirect.id
 }
 

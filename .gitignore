@@ -1,3 +1,6 @@
+# Powershell - until templated...
+deploy.ps1 
+
 # Terraform
 *.tfvars
 *.tfbackend
