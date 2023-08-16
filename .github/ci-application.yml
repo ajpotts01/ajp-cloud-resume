@@ -1,11 +1,11 @@
 name: ci-application
 on:
-  pull_request:
-    branches: [ main ]
-    paths:
-      - "application/**"
-  push:
-    branches: [ feature/ci ]
+  - pull_request:
+      branches: [ main ]
+      paths:
+        - "application/**"
+  - push:
+      branches: [ feature/ci ]
 
 env:
   lol: "yep"
