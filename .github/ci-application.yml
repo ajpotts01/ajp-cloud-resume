@@ -1,0 +1,38 @@
+name: ci-application
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "application/**"
+
+env:
+  lol: "yep"
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04 # Docker image runs on Debian, but should be OK here
+    env:
+      PIPENV_VENV_IN_PROJECT: 1
+
+    steps:
+      # Get PR branch
+      - name: Source code - checkout PR
+        uses: actions/checkout@v3
+
+      # Python setup
+      - name: Python - initial setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.5
+      
+      # Install Python deps
+      - name: Python - dependencies setup
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv==2023.7.23
+          pipenv install --system
+
+      # Black checks
+      - name: Code formatting rules
+        run: black --check --verbose --diff --color
+          
