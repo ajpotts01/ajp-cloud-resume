@@ -4,6 +4,8 @@ on:
     branches: [ main ]
     paths:
       - "application/**"
+  push:
+    branches: [ feature/ci ]
 
 env:
   lol: "yep"
