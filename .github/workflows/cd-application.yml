@@ -65,7 +65,7 @@ jobs:
           gcloud builds submit \
           --region=${{ env.gcp_region }} \
           -t gcr.io/${{ env.gcp_project }}/${{ env.gcp_gcr_name }} \
-          --gcs-log-dir gs://${{ env.app_name }}-cloud-build-logs
+          --gcs-log-dir gs://${{ env.app_name }}-cloud-build-logs \
           .
 
       # Deploy to Cloud Run
