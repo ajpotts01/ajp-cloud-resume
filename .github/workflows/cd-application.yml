@@ -12,6 +12,7 @@ env:
   gcp_sa_key: ${{ secrets.GCP_SA_KEY }}
   gcp_gcr_name: ${{ secrets.GCP_GCR_NAME }}
   gcp_region: ${{ secrets.GCP_REGION }}
+  app_name: cloud-resume
   django_allowed_hosts: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
 
 jobs:
@@ -64,6 +65,7 @@ jobs:
           gcloud builds submit \
           --region=${{ env.gcp_region }} \
           -t gcr.io/${{ env.gcp_project }}/${{ env.gcp_gcr_name }} \
+          --gcs-log-dir gs://${{ env.app_name }}-cloud-build-logs
           .
 
       # Deploy to Cloud Run
