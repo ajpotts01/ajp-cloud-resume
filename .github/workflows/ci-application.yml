@@ -34,5 +34,5 @@ jobs:
 
       # Black checks
       - name: Code formatting rules
-        run: black --check --verbose --diff --color
+        run: black --check --verbose --diff --color application/
           
