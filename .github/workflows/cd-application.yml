@@ -55,7 +55,7 @@ jobs:
       # Deployment - docker auth
       - name: Deployment - configure docker
         run: |
-          gcloud config project set ${{ env.gcp_project }}
+          gcloud config set project ${{ env.gcp_project }}
           gcloud auth configure-docker
 
       # Deployment - Submit to Cloud Build
