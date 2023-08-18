@@ -23,7 +23,7 @@ jobs:
       - name: Python - initial setup
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9.5
+          python-version: 3.9
       
       # Install Python deps
       - name: Python - dependencies setup
@@ -34,5 +34,10 @@ jobs:
 
       # Black checks
       - name: Code formatting rules
-        run: black --check --verbose --diff --color
-          
+        run: black --check --verbose --diff --color application/
+      
+      # Unit tests
+      - name: Unit tests
+        run: |
+          cd application
+          python manage.py test

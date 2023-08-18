@@ -6,7 +6,7 @@ from .models import Visit
 
 # Create your views here.
 def new_visit(page: str) -> int:
-    new_visit: Visit = Visit(page=page) # Defaults to utcnow
+    new_visit: Visit = Visit(page=page)  # Defaults to utcnow
     new_visit.save()
 
     visit_count: int = Visit.objects.count()

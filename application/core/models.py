@@ -4,6 +4,7 @@ from django.utils import timezone
 
 
 # Create your models here.
+# CI trigger
 class Visit(models.Model):
     page: models.CharField = models.CharField(max_length=25)
     visit_time: models.DateTimeField = models.DateTimeField(default=timezone.now)
