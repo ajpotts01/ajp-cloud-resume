@@ -38,4 +38,6 @@ jobs:
       
       # Unit tests
       - name: Unit tests
-        run: python application/manage.py test
+        run: |
+          cd application
+          python manage.py test
