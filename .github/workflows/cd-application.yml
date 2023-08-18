@@ -1,10 +1,10 @@
 name: cd-application
 on:
-  - push:
-      branches: [ main ]
-      paths:
-        - "application/**"
-  - workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "application/**"
+  workflow_dispatch:
 
 # TODO: Consider workload identity federation
 env:
