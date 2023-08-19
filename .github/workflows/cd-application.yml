@@ -9,6 +9,7 @@ on:
 # TODO: Consider workload identity federation
 env:
   gcp_project: ${{ secrets.GCP_PROJECT }}
+  gcp_sa_name: ${{ secrets.GCP_SA_NAME }}
   gcp_sa_key: ${{ secrets.GCP_SA_KEY }}
   gcp_gcr_name: ${{ secrets.GCP_GCR_NAME }}
   gcp_region: ${{ secrets.GCP_REGION }}
@@ -74,6 +75,7 @@ jobs:
           gcloud run deploy \
           ${{ env.gcp_gcr_name }} \
           --image=gcr.io/${{ env.gcp_project }}/${{ env.gcp_gcr_name }} \
+          --service-account=${{ env.gcp_sa_name }} \
           --region=${{ env.gcp_region }} \
           --allow-unauthenticated \
           --set-env-vars ^@^ALLOWED_HOST_URLS=${{ env.django_allowed_hosts }}
