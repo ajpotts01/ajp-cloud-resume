@@ -14,7 +14,7 @@ env:
   gcp_gcr_name: ${{ secrets.GCP_GCR_NAME }}
   gcp_region: ${{ secrets.GCP_REGION }}
   app_name: cloud-resume
-  django_allowed_hosts: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
+  django_allowed_hosts: ${{ vars.DJ_ALLOWED_HOSTS }} #${{ secrets.DJANGO_ALLOWED_HOSTS }}
 
 jobs:
   cd:
