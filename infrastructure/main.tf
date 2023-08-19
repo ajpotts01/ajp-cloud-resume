@@ -26,6 +26,6 @@ module "load-balancer" {
 module "storage-bucket" {
   source     = "./storage_bucket"
   app_name   = var.app_name
-  region = "australia-southeast1"
+  region     = "australia-southeast1"
   depends_on = [module.service-account]
 }

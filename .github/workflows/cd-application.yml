@@ -16,7 +16,7 @@ env:
   django_allowed_hosts: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
 
 jobs:
-  ci:
+  cd:
     runs-on: ubuntu-22.04 # Docker image runs on Debian, but should be OK here
     env:
       PIPENV_VENV_IN_PROJECT: 1
