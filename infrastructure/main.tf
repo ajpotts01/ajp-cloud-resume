@@ -22,3 +22,10 @@ module "load-balancer" {
   domain_name = var.domain_name
   depends_on  = [module.service-account]
 }
+
+module "storage-bucket" {
+  source     = "./storage_bucket"
+  app_name   = var.app_name
+  region     = "australia-southeast1"
+  depends_on = [module.service-account]
+}

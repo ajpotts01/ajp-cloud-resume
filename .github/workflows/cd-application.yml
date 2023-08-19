@@ -9,13 +9,15 @@ on:
 # TODO: Consider workload identity federation
 env:
   gcp_project: ${{ secrets.GCP_PROJECT }}
+  gcp_sa_name: ${{ secrets.GCP_SA_NAME }}
   gcp_sa_key: ${{ secrets.GCP_SA_KEY }}
   gcp_gcr_name: ${{ secrets.GCP_GCR_NAME }}
   gcp_region: ${{ secrets.GCP_REGION }}
-  django_allowed_hosts: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
+  app_name: cloud-resume
+  django_allowed_hosts: ${{ vars.DJ_ALLOWED_HOSTS }} #${{ secrets.DJANGO_ALLOWED_HOSTS }}
 
 jobs:
-  ci:
+  cd:
     runs-on: ubuntu-22.04 # Docker image runs on Debian, but should be OK here
     env:
       PIPENV_VENV_IN_PROJECT: 1
@@ -54,6 +56,7 @@ jobs:
       # Deployment - docker auth
       - name: Deployment - configure docker
         run: |
+          gcloud config set project ${{ env.gcp_project }}
           gcloud auth configure-docker
 
       # Deployment - Submit to Cloud Build
@@ -63,6 +66,7 @@ jobs:
           gcloud builds submit \
           --region=${{ env.gcp_region }} \
           -t gcr.io/${{ env.gcp_project }}/${{ env.gcp_gcr_name }} \
+          --gcs-log-dir gs://${{ env.app_name }}-cloud-build-logs \
           .
 
       # Deploy to Cloud Run
@@ -71,6 +75,7 @@ jobs:
           gcloud run deploy \
           ${{ env.gcp_gcr_name }} \
           --image=gcr.io/${{ env.gcp_project }}/${{ env.gcp_gcr_name }} \
+          --service-account=${{ env.gcp_sa_name }} \
           --region=${{ env.gcp_region }} \
           --allow-unauthenticated \
           --set-env-vars ^@^ALLOWED_HOST_URLS=${{ env.django_allowed_hosts }}
