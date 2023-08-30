@@ -23,9 +23,15 @@ class Certification(models.Model):
     title: models.CharField = models.CharField(max_length=250)
     issued_by: models.CharField = models.CharField(max_length=250)
     issued_date: models.DateField = models.DateField()
+    url: models.URLField = models.URLField(blank=True)
+    image: models.ImageField = models.ImageField(upload_to="certs/images/")
 
 class Education(models.Model):
     title: models.CharField = models.CharField(max_length=250)
     school: models.CharField = models.CharField(max_length=250)
     start_year: models.IntegerField = models.IntegerField()
     end_year: models.IntegerField = models.IntegerField()
+
+class Skill(models.Model):
+    type: models.CharField = models.CharField(max_length=100) # TODO: Change to enum?
+    proficiency: models.CharField = models.CharField(max_length=100) # TODO: Change to enum?
