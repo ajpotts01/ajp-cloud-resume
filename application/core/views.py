@@ -18,10 +18,9 @@ def home(request: HttpRequest) -> HttpResponse:
 
     return render(
         request=request,
-        template_name="core/home.html",
+        template_name="core/about.html",
         context={"visit_count": visit_count},
-    )
-
+    ) 
 
 def contact(request: HttpRequest) -> HttpResponse:
     visit_count: int = new_visit(page="contact")
