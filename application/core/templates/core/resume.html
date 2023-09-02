@@ -3,4 +3,42 @@
 {% block content %}
     <p>Resume!</p>
     <p>Total visitors: {{ visit_count }}</p>
+
+    <h2>Core Skills</h2>
+    <div class="resume-section">
+    {% for skill in skills %}
+        <p>{{ skill.type }} - {{ skill.proficiency }}</p>
+    {% endfor %}
+    </div>
+
+    <h2>Employment History</h2>
+    <div class="resume-section">
+    {% for job in jobs %}
+        <p>{{ job.title }}</p>
+        <p>{{ job.company }}</p>
+        <p>{{ job.start_date }} - {{ job.end_date }}</p>
+        <p>{{ job.description }}</p>
+    {% endfor %}
+    </div>
+
+    <h2>Certifications</h2>
+    <div class="resume-section">
+    {% for cert in certs %}
+        <p>{{ cert.title }}</p>
+        <p>{{ cert.issued_by }}</p>
+        <p>{{ cert.issued_date }}</p>
+        <p>{{ cert.url }}</p>
+        <img src="{{ cert.image }}"/>
+    {% endfor %}
+    </div>
+
+    <h2>Education</h2>
+    <div class="resume-section">
+    {% for school in education %}
+        <p>{{ school.title }}</p>
+        <p>{{ school.school }}</p>
+        <p>{{ school.start_year }} - {{ school.end_year }}</p>
+    {% endfor %}
+    </div>
+
 {% endblock %}
