@@ -9,6 +9,7 @@ black = "*"
 pillow = "*"
 gunicorn = "*"
 django-storages = {extras = ["google"], version = "*"}
+google-cloud-secret-manager = "*"
 
 [dev-packages]
 
