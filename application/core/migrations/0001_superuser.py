@@ -1,7 +1,9 @@
 import os
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import migrations
+from django.db.backends.sqlite3.schema import DatabaseSchemaEditor
 from django.db.migrations.state import StateApps
 
 import google.auth
@@ -9,9 +11,9 @@ from google.cloud import secretmanager
 
 
 # https://cloud.google.com/python/django/run#superuser_creation_with_data_migrations
-def create_super_user(apps: StateApps) -> None:
-    if os.getenv("TRAMPOLINE_CI", None):
-        pass
+def create_super_user(apps: StateApps, schema_editor: DatabaseSchemaEditor) -> None:
+    if os.getenv("TRAMPOLINE_CI", None) or settings.DEBUG:
+        admin_password: str = "test"
     else:
         client: secretmanager.SecretManagerServiceClient = (
             secretmanager.SecretManagerServiceClient()
@@ -29,6 +31,6 @@ def create_super_user(apps: StateApps) -> None:
 
 
 class Migration(migrations.Migration):
-    initial = False
+    initial = True
     dependencies = []
     operations = [migrations.RunPython(create_super_user)]

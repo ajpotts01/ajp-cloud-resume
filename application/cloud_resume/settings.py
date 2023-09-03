@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("ENVIRONMENT") == "GCR"
+DEBUG = os.getenv("ENVIRONMENT") != "GCR"
 
 # https://cloud.google.com/python/django/run#csrf_configurations
 ALLOWED_HOST_URLS = os.getenv("ALLOWED_HOST_URLS", None)
