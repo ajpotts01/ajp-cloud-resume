@@ -19,6 +19,7 @@ class Job(models.Model):
     start_date: models.CharField = models.CharField(max_length=100)
     end_date: models.CharField = models.CharField(max_length=100)
     description: models.CharField = models.CharField(max_length=250)
+    job_number: models.IntegerField = models.IntegerField()
 
     def __str__(self) -> str:
         return f"{self.title} - {self.company}"
