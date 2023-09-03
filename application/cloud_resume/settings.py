@@ -163,5 +163,4 @@ if os.getenv("ENVIRONMENT") == "GCR":
     GS_BUCKET_NAME = os.getenv("GCS_BUCKET_NAME")
     STORAGES = {"default": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"},
                 "staticfiles": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"}}
-    GS_DEFAULT_ACL = None
-    GS_QUERYSTRING_AUTH = False
+    GS_DEFAULT_ACL = "publicRead"
