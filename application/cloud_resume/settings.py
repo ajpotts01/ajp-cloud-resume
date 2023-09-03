@@ -162,5 +162,5 @@ MEDIA_URL = "/media/"
 if os.getenv("ENVIRONMENT") == "GCR":
     GS_BUCKET_NAME = os.getenv("GCS_BUCKET_NAME")
     DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-    STATICFILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+    STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
     GS_DEFAULT_ACL = "publicRead"
