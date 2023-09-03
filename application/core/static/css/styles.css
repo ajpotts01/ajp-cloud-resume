@@ -173,6 +173,26 @@ footer span.footer-label {
     height: 100%;
 }
 
+.certification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.cert-image {
+    max-width: 75px;
+}
+
+.cert-image img {
+    width: 100%;
+}
+
+.job-desc {
+    margin-right: 10px;
+}
+
 .name {
     grid-area: name;
     border: none;
