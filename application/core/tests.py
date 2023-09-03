@@ -12,7 +12,8 @@ class HomePageTest(TestCase):
     def test_uses_home_template(self):
         response: HttpResponse = self.client.get("/")
 
-        self.assertTemplateUsed(response=response, template_name="core/home.html")
+        self.assertTemplateUsed(response=response, template_name="core/about.html")
+        self.assertTemplateUsed(response=response, template_name="core/base.html")
 
     def test_home_registers_visit(self):
         response: HttpResponse = self.client.get("/")
@@ -37,6 +38,7 @@ class ResumePageTest(TestCase):
         response: HttpResponse = self.client.get("/resume")
 
         self.assertTemplateUsed(response=response, template_name="core/resume.html")
+        self.assertTemplateUsed(response=response, template_name="core/base.html")
 
     def test_resume_registers_visit(self):
         response: HttpResponse = self.client.get("/resume")
