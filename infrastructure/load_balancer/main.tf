@@ -64,7 +64,7 @@ resource "google_dns_record_set" "cloud_resume_lb_dns_www" {
 resource "google_compute_region_network_endpoint_group" "backend_endpoint" {
   name = "${var.app_name}-lb-backend-endpoint"
   #project               = var.project_id
-  region                = "australia-southeast1"
+  region                = "us-central1"
   network_endpoint_type = "SERVERLESS"
 
   cloud_run {
@@ -84,7 +84,6 @@ resource "google_compute_backend_service" "backend_service" {
   timeout_sec                     = 30
   connection_draining_timeout_sec = 0
   compression_mode                = "DISABLED"
-
 
   log_config {
     enable = false

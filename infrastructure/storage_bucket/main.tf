@@ -4,4 +4,5 @@ resource "google_storage_bucket" "build_logs_bucket" {
 
   uniform_bucket_level_access = true
   public_access_prevention    = "enforced" # The documentation on this is woeful
+  force_destroy = true
 }
