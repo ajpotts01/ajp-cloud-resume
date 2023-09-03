@@ -39,7 +39,7 @@ def resume(request: HttpRequest) -> HttpResponse:
     certs: list[Certification] = Certification.objects.all()
     skills: list[Skill] = Skill.objects.all()
     jobs: list[Job] = Job.objects.all()
-    schools: list[Education] = Education.objects.all()
+    education: list[Education] = Education.objects.all()
 
     return render(
         request=request,
@@ -48,5 +48,5 @@ def resume(request: HttpRequest) -> HttpResponse:
                  "certs": certs,
                  "skills": skills,
                  "jobs": jobs,
-                 "schools": schools},
+                 "education": education},
     )

@@ -15,8 +15,8 @@ class Visit(models.Model):
 class Job(models.Model):
     title: models.CharField = models.CharField(max_length=250)
     company: models.CharField = models.CharField(max_length=250)
-    start_date: models.DateField = models.DateField()
-    end_date: models.DateField = models.DateField()
+    start_date: models.CharField = models.CharField(max_length=100)
+    end_date: models.CharField = models.CharField(max_length=100)
     description: models.CharField = models.CharField(max_length=250)
 
     def __str__(self) -> str:

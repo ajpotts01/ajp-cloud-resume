@@ -9,6 +9,7 @@
         <section class="grid-area name">
             <h1>Alexander Potts</h1>
             <h2>Software and Data Engineer</h2>
+            <p><a href="https://www.linkedin.com/in/alexander-potts-9b4a41aa" target="_blank"><img width="25px" src="{% static 'assets/linkedin-original.svg' %}"/></a></p>
         </section>
         <section class="grid-area photo">
             <div class="circle">
@@ -55,7 +56,7 @@
                 <h2>Education</h2>
             </div>
             {% for school in education %}
-            <p>{{ school.title }}</p>
+            <p><strong>{{ school.title }}</strong></p>
             <p>{{ school.school }}</p>
             <p>{{ school.start_year }} - {{ school.end_year }}</p>
             {% endfor %}
