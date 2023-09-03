@@ -20,7 +20,8 @@ def home(request: HttpRequest) -> HttpResponse:
         request=request,
         template_name="core/about.html",
         context={"visit_count": visit_count},
-    ) 
+    )
+
 
 def contact(request: HttpRequest) -> HttpResponse:
     visit_count: int = new_visit(page="contact")
@@ -44,9 +45,11 @@ def resume(request: HttpRequest) -> HttpResponse:
     return render(
         request=request,
         template_name="core/resume.html",
-        context={"visit_count": visit_count,
-                 "certs": certs,
-                 "skills": skills,
-                 "jobs": jobs,
-                 "education": education},
+        context={
+            "visit_count": visit_count,
+            "certs": certs,
+            "skills": skills,
+            "jobs": jobs,
+            "education": education,
+        },
     )
