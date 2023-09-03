@@ -81,7 +81,4 @@ jobs:
           --service-account=${{ env.gcp_sa_name }} \
           --region=${{ env.gcp_region }} \
           --allow-unauthenticated \
-          --set-env-vars ^@^ALLOWED_HOST_URLS=${{ env.django_allowed_hosts }}@ \
-          DJANGO_SECRET_KEY="${{ env.django_secret_key }}"@ \
-          GCS_BUCKET_NAME=${{ env.gcp_static_gcs_bucket }}@ \
-          PW_NAME=${{ env.django_admin_pw_secret }}
+          --set-env-vars ^@^ALLOWED_HOST_URLS=${{ env.django_allowed_hosts }}@DJANGO_SECRET_KEY="${{ env.django_secret_key }}"@GCS_BUCKET_NAME=${{ env.gcp_static_gcs_bucket }}@PW_NAME=${{ env.django_admin_pw_secret }}
