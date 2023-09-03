@@ -1,6 +1,66 @@
 {% extends "core/base.html" %}
+{% load static %}
 {% block title %}Resume{% endblock %}
 {% block content %}
-    <p>Resume!</p>
-    <p>Total visitors: {{ visit_count }}</p>
+    <!-- <p>Resume!</p>
+    <p>Total visitors: {{ visit_count }}</p> -->
+<main class="position-wrapper">
+    <article class="resume">
+        <section class="grid-area name">
+            <h1>Alexander Potts</h1>
+            <h2>Software and Data Engineer</h2>
+            <p><a href="https://www.linkedin.com/in/alexander-potts-9b4a41aa" target="_blank"><img width="25px" src="{% static 'assets/linkedin-original.svg' %}"/></a></p>
+        </section>
+        <section class="grid-area photo">
+            <div class="circle">
+                <img src="{% static 'assets/me.jpeg' %}"/>
+            </div>
+        </section>        
+        <section class="grid-area core-skills">
+            <div class="section-header">
+                <h2>Core Skills</h2>
+            </div>
+            {% for skill in skills %}
+                <p>{{ skill.type }} - {{ skill.proficiency }}</p>
+            {% endfor %}
+        </section>
+        <section class="grid-area work">
+            <div class="section-header">
+                <h2>Employment History</h2>
+            </div>
+            {% for job in jobs %}
+            <p><strong>{{ job.title }}</strong></p>
+            <p><span class="job-desc">{{ job.company }}</span><span class="job-desc">{{ job.start_date }} - {{ job.end_date }}</span></p>
+            <p>{{ job.description }}</p>
+            {% endfor %}
+        </section>
+        <section class="grid-area certifications">
+            <div class="section-header">
+                <h2>Certifications</h2>
+            </div>
+            {% for cert in certs %}
+            <div class="certification">
+                <div class="cert-details">
+                    <p>{{ cert.title }}</p>
+                    <p>{{ cert.issued_by }}</p>
+                    <p>{{ cert.issued_date }}</p>
+                </div>
+                <div class="cert-media">
+                    <div class="cert-image"><a href="{{ cert.url }}" target="_blank"><img src="{{ cert.image.url }}"/></a></div>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        <section class="grid-area education">
+            <div class="section-header">
+                <h2>Education</h2>
+            </div>
+            {% for school in education %}
+            <p><strong>{{ school.title }}</strong></p>
+            <p>{{ school.school }}</p>
+            <p>{{ school.start_year }} - {{ school.end_year }}</p>
+            {% endfor %}
+        </section>
+    </article>
+</main>
 {% endblock %}
