@@ -29,3 +29,10 @@ module "storage-bucket" {
   region     = "us-central1"
   depends_on = [module.service-account]
 }
+
+# module "compute-engine" {
+#   source     = "./compute_engine"
+#   app_name   = var.app_name
+#   region     = "us-central1"
+#   depends_on = [module.service-api]
+# }

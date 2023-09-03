@@ -22,13 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-n6_^9*jpn6(7in6!t@%-cveca^1i*o54=rj(wkmrz+b8vjzvos"
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-n6_^9*jpn6(7in6!t@%-cveca^1i*o54=rj(wkmrz+b8vjzvos",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-# ALLOWED_HOSTS = []
-# CSRF_TRUSTED_ORIGINS = []
+DEBUG = os.getenv("ENVIRONMENT") == "GCR"
 
 # https://cloud.google.com/python/django/run#csrf_configurations
 ALLOWED_HOST_URLS = os.getenv("ALLOWED_HOST_URLS", None)
@@ -156,3 +156,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Uploaded media
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+# GCS integration
+# https://cloud.google.com/python/django/run#cloud-stored_static
+if os.getenv("ENVIRONMENT") == "GCR":
+    GS_BUCKET_NAME = os.getenv("GCS_BUCKET_NAME")
+    DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+    STATICFILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+    GS_DEFAULT_ACL = "publicRead"
