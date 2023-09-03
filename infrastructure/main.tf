@@ -30,6 +30,13 @@ module "storage-bucket" {
   depends_on = [module.service-account]
 }
 
+module "secret-manager" {
+  source     = "./secret_manager"
+  app_name   = var.app_name
+  region     = "us-central1"
+  depends_on = [module.service-api]
+}
+
 # module "compute-engine" {
 #   source     = "./compute_engine"
 #   app_name   = var.app_name

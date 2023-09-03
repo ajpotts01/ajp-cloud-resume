@@ -17,3 +17,7 @@ resource "google_project_service" "dns_service" {
   #project = var.project_id
   service = "dns.googleapis.com"
 }
+
+resource "google_project_service" "secret_manager" {
+  service = "secretmanager.googleapis.com"
+}

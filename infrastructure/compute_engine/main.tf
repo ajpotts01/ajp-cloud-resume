@@ -8,7 +8,7 @@ resource "google_compute_address" "app_database_server_address" {
   name         = "${var.app_name}-db-server-address"
   address_type = "EXTERNAL"
   ip_version   = "IPV4"
-  region = var.region
+  region       = var.region
 }
 
 resource "google_compute_instance" "app_database_server" {
