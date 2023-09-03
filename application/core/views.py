@@ -37,10 +37,10 @@ def resume(request: HttpRequest) -> HttpResponse:
     visit_count: int = new_visit(page="resume")
 
     # TODO: Sorting
-    certs: list[Certification] = Certification.objects.all()
+    certs: list[Certification] = Certification.objects.all().order_by("-issued_date")
     skills: list[Skill] = Skill.objects.all()
-    jobs: list[Job] = Job.objects.all()
-    education: list[Education] = Education.objects.all()
+    jobs: list[Job] = Job.objects.all().order_by("-job_number")
+    education: list[Education] = Education.objects.all().order_by("-start_year")
 
     return render(
         request=request,
