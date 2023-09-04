@@ -37,6 +37,6 @@ resource "google_project_iam_member" "service_account_actor_binding" {
 
 resource "google_project_iam_member" "service_account_secrets_binding" {
   project = var.project_id
-  role = "roles/secretmanager.secretAccessor"
-  member = "serviceAccount:${google_service_account.cloud_resume_service_account.email}"
+  role    = "roles/secretmanager.secretAccessor"
+  member  = "serviceAccount:${google_service_account.cloud_resume_service_account.email}"
 }

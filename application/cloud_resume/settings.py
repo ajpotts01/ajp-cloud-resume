@@ -161,6 +161,8 @@ MEDIA_URL = "/media/"
 # https://cloud.google.com/python/django/run#cloud-stored_static
 if os.getenv("ENVIRONMENT") == "GCR":
     GS_BUCKET_NAME = os.getenv("GCS_BUCKET_NAME")
-    STORAGES = {"default": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"},
-                "staticfiles": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"}}
+    STORAGES = {
+        "default": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"},
+        "staticfiles": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"},
+    }
     GS_DEFAULT_ACL = "publicRead"

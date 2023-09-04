@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4ef360e88618c679a99efae124766796c1579d6bb85a9b2aa20e6c2159e7e13c"
+            "sha256": "a684c67f47ebda507413a4bac8597c6e1a14b6adec71dcdd0c3b40fb1317a554"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -166,6 +166,14 @@
             ],
             "markers": "platform_system == 'Windows'",
             "version": "==0.4.6"
+        },
+        "dj-database-url": {
+            "hashes": [
+                "sha256:04bc34b248d4c21aaa13e4ab419ae6575ef5f10f3df735ce7da97722caa356e0",
+                "sha256:f2042cefe1086e539c9da39fad5ad7f61173bf79665e69bf7e4de55fa88b135f"
+            ],
+            "index": "pypi",
+            "version": "==2.1.0"
         },
         "django": {
             "hashes": [
@@ -585,7 +593,7 @@
                 "sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36",
                 "sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2"
             ],
-            "markers": "python_version < '3.10'",
+            "markers": "python_version >= '3.7'",
             "version": "==4.7.1"
         },
         "tzdata": {

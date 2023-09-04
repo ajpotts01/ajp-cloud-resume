@@ -14,6 +14,7 @@ env:
   gcp_gcr_name: ${{ secrets.GCP_GCR_NAME }}
   gcp_region: ${{ secrets.GCP_REGION }}
   gcp_static_gcs_bucket: ${{ secrets.GCS_BUCKET_NAME }}
+  gcp_db_gcs_bucket: ${{ secrets.GCS_DB_BUCKET_NAME }}
   app_name: cloud-resume
   django_allowed_hosts: ${{ vars.DJ_ALLOWED_HOSTS }} #${{ secrets.DJANGO_ALLOWED_HOSTS }}
   django_secret_key: ${{ secrets.DJANGO_SECRET_KEY }}
@@ -81,4 +82,4 @@ jobs:
           --service-account=${{ env.gcp_sa_name }} \
           --region=${{ env.gcp_region }} \
           --allow-unauthenticated \
-          --set-env-vars ^@^ALLOWED_HOST_URLS=${{ env.django_allowed_hosts }}@DJANGO_SECRET_KEY="${{ env.django_secret_key }}"@GCS_BUCKET_NAME=${{ env.gcp_static_gcs_bucket }}@PW_NAME=${{ env.django_admin_pw_secret }}
+          --set-env-vars ^@^ALLOWED_HOST_URLS=${{ env.django_allowed_hosts }}@DJANGO_SECRET_KEY="${{ env.django_secret_key }}"@GCS_BUCKET_NAME=${{ env.gcp_static_gcs_bucket }}@PW_NAME=${{ env.django_admin_pw_secret }}@GCS_DB_URL=${{ env.gcp_db_gcs_bucket }}

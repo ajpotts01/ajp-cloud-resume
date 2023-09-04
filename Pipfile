@@ -10,6 +10,7 @@ pillow = "*"
 gunicorn = "*"
 django-storages = {extras = ["google"], version = "*"}
 google-cloud-secret-manager = "*"
+dj-database-url = "*"
 
 [dev-packages]
 

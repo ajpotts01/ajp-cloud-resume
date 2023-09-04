@@ -6,13 +6,14 @@ COPY . /application
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
+RUN wget https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
+
+RUN sudo dpkg -i litestream-v0.3.9-linux-amd64.deb
+
 EXPOSE 8080
 
 ENV ENVIRONMENT=GCR
 
 #CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8080"]
 # https://medium.com/harvested-financial-engineering/deploying-a-containerized-django-gunicorn-server-on-google-cloud-run-feb13823f7f4
-CMD ["sh", "-c", \
-    "python manage.py migrate && \
-    python manage.py collectstatic --verbosity 2 --no-input && \
-    gunicorn --preload cloud_resume.wsgi:application --bind 0.0.0.0:8080"]
+CMD ["sh", "-c", "start_app.sh"]
