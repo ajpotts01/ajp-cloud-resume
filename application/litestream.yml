@@ -1,5 +1,6 @@
 exec: gunicorn --preload cloud_resume.wsgi:application --bind 0.0.0.0:8080
 dbs:
   - path: "/tmp/db.sqlite3"
-  - replicas:
-    - url: "$GCS_DB_URL"
+    replicas:
+      - url: "$GCS_DB_URL"
+        sync-interval: 5s
