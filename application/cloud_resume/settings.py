@@ -99,7 +99,7 @@ if os.getenv("ENVIRONMENT") == "GCR":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "/tmp/db.sqlite3",
+            "NAME": "/db/db.sqlite3",
         }
     }
 else:

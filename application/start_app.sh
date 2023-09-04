@@ -1,7 +1,7 @@
 # https://usher.dev/posts/django-on-flyio-with-litestream-litefs/
 echo $GCS_DB_URL
 ls
-litestream restore -if-db-not-exists -if-replica-exists -o "/tmp/db.sqlite3" "$GCS_DB_URL"
+litestream restore -if-db-not-exists -if-replica-exists -o "/db/db.sqlite3" "$GCS_DB_URL"
 
 python manage.py migrate
 python manage.py createcachetable
