@@ -4,7 +4,7 @@ WORKDIR /application
 
 COPY . /application
 
-RUN apt-get update && apt-get install wget
+RUN apt-get update && apt-get -y install wget
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
