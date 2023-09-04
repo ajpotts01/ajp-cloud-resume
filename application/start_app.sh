@@ -1,9 +1,14 @@
 # https://usher.dev/posts/django-on-flyio-with-litestream-litefs/
+if [[ -z "$GCS_DB_URL" ]]; then
+    echo "S3_DB_URL env var not specified - this should be an S3-style URL to the location of the replicated database file"
+    exit 1
+fi
+
+litestream restore -if-db-not-exists -if-replica-exists -o "/tmp/db.sqlite3" "$GCS_DB_URL"
+
 python manage.py migrate
 python manage.py createcachetable
 python manage.py collectstatic --verbosity 2 --no-input
-
-litestream restore -if-db-not-exists -if-replica-exists -o "/tmp/db.sqlite3" "$GCS_DB_URL"
 
 chmod -R a+rwX /tmp
 
