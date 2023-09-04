@@ -12,6 +12,8 @@ RUN wget https://github.com/benbjohnson/litestream/releases/download/v0.3.9/lite
 
 RUN dpkg -i litestream-v0.3.9-linux-amd64.deb
 
+RUN chmod +x /application/start_app.sh
+
 EXPOSE 8080
 
 ENV ENVIRONMENT=GCR
