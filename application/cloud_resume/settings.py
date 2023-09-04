@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core",
+    "blog",
     # Wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -190,4 +191,6 @@ if os.getenv("ENVIRONMENT") == "GCR":
 
 # Wagtail properties
 WAGTAIL_SITE_NAME = "AJP Cloud Blog"
-WAGTAILADMIN_BASE_URL = ALLOWED_HOST_URLS[0]
+
+if len(ALLOWED_HOSTS) > 0:
+    WAGTAILADMIN_BASE_URL = ALLOWED_HOSTS[0]
