@@ -4,6 +4,7 @@ if [[ -z "$GCS_DB_URL" ]]; then
     exit 1
 fi
 
+echo $GCS_DB_URL
 litestream restore -if-db-not-exists -if-replica-exists -o "/tmp/db.sqlite3" "$GCS_DB_URL"
 
 python manage.py migrate
