@@ -12,7 +12,7 @@ from google.cloud import secretmanager
 
 # https://cloud.google.com/python/django/run#superuser_creation_with_data_migrations
 def create_super_user(apps: StateApps, schema_editor: DatabaseSchemaEditor) -> None:
-    if os.getenv("TRAMPOLINE_CI", None) or settings.DEBUG:
+    if os.getenv("TRAMPOLINE_CI", None) or settings.DEBUG or settings.TESTING:
         admin_password: str = "test"
     else:
         client: secretmanager.SecretManagerServiceClient = (

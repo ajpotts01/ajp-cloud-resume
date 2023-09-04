@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -29,6 +30,7 @@ SECRET_KEY = os.getenv(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("ENVIRONMENT") != "GCR"
+TESTING = sys.argv[1:2] == ["test"]
 
 # https://cloud.google.com/python/django/run#csrf_configurations
 ALLOWED_HOST_URLS = os.getenv("ALLOWED_HOST_URLS", None)
