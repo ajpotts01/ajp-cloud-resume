@@ -18,4 +18,4 @@ ENV ENVIRONMENT=GCR
 
 #CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8080"]
 # https://medium.com/harvested-financial-engineering/deploying-a-containerized-django-gunicorn-server-on-google-cloud-run-feb13823f7f4
-CMD ["sh", "-c", "start_app.sh"]
+CMD ["sh", "-c", "/application/start_app.sh"]
