@@ -1,7 +1,7 @@
 provider "google" {
   project = var.project_id
-  region  = "australia-southeast1"
-  zone    = "australia-southeast1-a"
+  region  = "us-central1"
+  zone    = "us-central1-a"
 }
 
 module "service-api" {
@@ -26,6 +26,20 @@ module "load-balancer" {
 module "storage-bucket" {
   source     = "./storage_bucket"
   app_name   = var.app_name
-  region     = "australia-southeast1"
+  region     = "us-central1"
   depends_on = [module.service-account]
 }
+
+module "secret-manager" {
+  source     = "./secret_manager"
+  app_name   = var.app_name
+  region     = "us-central1"
+  depends_on = [module.service-api]
+}
+
+# module "compute-engine" {
+#   source     = "./compute_engine"
+#   app_name   = var.app_name
+#   region     = "us-central1"
+#   depends_on = [module.service-api]
+# }
