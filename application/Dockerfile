@@ -4,11 +4,13 @@ WORKDIR /application
 
 COPY . /application
 
+RUN apt-get update && apt-get install wget
+
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 RUN wget https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
 
-RUN sudo dpkg -i litestream-v0.3.9-linux-amd64.deb
+RUN dpkg -i litestream-v0.3.9-linux-amd64.deb
 
 EXPOSE 8080
 
