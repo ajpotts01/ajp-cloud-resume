@@ -3,7 +3,9 @@ from typing import Any
 from django import forms
 from django.db import models
 
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from taggit.models import TaggedItemBase
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page, Orderable
@@ -15,6 +17,12 @@ class HomePage(Page):
     body: RichTextField = RichTextField(blank=True)
 
     content_panels: list[FieldPanel] = Page.content_panels + [FieldPanel("body")]
+
+
+class BlogPageTag(TaggedItemBase):
+    content_object: ParentalKey = ParentalKey(
+        "BlogPage", related_name="tagged_items", on_delete=models.CASCADE
+    )
 
 
 class BlogIndexPage(Page):
@@ -39,6 +47,10 @@ class BlogPage(Page):
         "blog.Author", blank=True
     )
 
+    tags: ClusterTaggableManager = ClusterTaggableManager(
+        through=BlogPageTag, blank=True
+    )
+
     def main_image(self):
         gallery_item = self.gallery_images.first()
         if gallery_item:
@@ -55,6 +67,7 @@ class BlogPage(Page):
             [
                 FieldPanel("date"),
                 FieldPanel("authors", widget=forms.CheckboxSelectMultiple),
+                FieldPanel("tags"),
             ],
             heading="Blog information",
         ),
@@ -62,6 +75,16 @@ class BlogPage(Page):
         FieldPanel("body"),
         InlinePanel("gallery_images", label="Gallery images"),
     ]
+
+
+class BlogTagIndexPage(Page):
+    def get_context(self, request):
+        tag = request.GET.get("tag")
+        blog_pages = BlogPage.objects.filter(tags__name=tag)
+
+        context = super().get_context(request)
+        context["blog_pages"] = blog_pages
+        return context
 
 
 class BlogPageGalleryImage(Orderable):
