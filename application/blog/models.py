@@ -1,18 +1,21 @@
 from typing import Any
 
+from django import forms
 from django.db import models
 
-from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import FieldPanel, InlinePanel
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page, Orderable
 from wagtail.search import index
+from wagtail.snippets.models import register_snippet
 
 
 class HomePage(Page):
     body: RichTextField = RichTextField(blank=True)
 
     content_panels: list[FieldPanel] = Page.content_panels + [FieldPanel("body")]
+
 
 class BlogIndexPage(Page):
     intro: RichTextField = RichTextField(blank=True)
@@ -27,10 +30,14 @@ class BlogIndexPage(Page):
 
     content_panels: list[FieldPanel] = Page.content_panels + [FieldPanel("intro")]
 
+
 class BlogPage(Page):
     date: models.DateField = models.DateField("Post date")
     intro: models.CharField = models.CharField(max_length=250)
     body: RichTextField = RichTextField(blank=True)
+    authors: ParentalManyToManyField = ParentalManyToManyField(
+        "blog.Author", blank=True
+    )
 
     def main_image(self):
         gallery_item = self.gallery_images.first()
@@ -44,14 +51,23 @@ class BlogPage(Page):
     ]
 
     content_panels: list[FieldPanel] = Page.content_panels + [
-        FieldPanel("date"),
+        MultiFieldPanel(
+            [
+                FieldPanel("date"),
+                FieldPanel("authors", widget=forms.CheckboxSelectMultiple),
+            ],
+            heading="Blog information",
+        ),
         FieldPanel("intro"),
         FieldPanel("body"),
         InlinePanel("gallery_images", label="Gallery images"),
     ]
 
+
 class BlogPageGalleryImage(Orderable):
-    page: ParentalKey = ParentalKey(BlogPage, on_delete=models.CASCADE, related_name="gallery_images")
+    page: ParentalKey = ParentalKey(
+        BlogPage, on_delete=models.CASCADE, related_name="gallery_images"
+    )
     image: models.ForeignKey = models.ForeignKey(
         "wagtailimages.Image", on_delete=models.CASCADE, related_name="+"
     )
@@ -61,3 +77,26 @@ class BlogPageGalleryImage(Orderable):
         FieldPanel("image"),
         FieldPanel("caption"),
     ]
+
+
+@register_snippet
+class Author(models.Model):
+    name: models.CharField = models.CharField(max_length=255)
+    author_image: models.ForeignKey = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    panels: list[FieldPanel] = [
+        FieldPanel("name"),
+        FieldPanel("author_image"),
+    ]
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural: str = "Authors"
