@@ -27,9 +27,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", view=include(arg="core.urls", namespace="core")),
-    path("cms/", include(wagtailadmin_urls)),
+    path("blog/admin", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
-    path("pages/", include(wagtail_urls)),
+    path("blog/", include(wagtail_urls)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -24,7 +24,7 @@
         {% endif %}
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
@@ -32,10 +32,35 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        <navbar id="navbar" class="nav">
+            <a href="{% url 'core:home' %}">About</a>
+            <a href="{% url 'core:resume' %}">Resume</a>
+            <a href="/blog">Blog</a>
+            <a id="profile-link" target="_blank" href="https://www.github.com/ajpotts01">GitHub</a>
+        </navbar>        
         {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+        <div class="container">
+            <main class="content">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
 
+        <footer>
+            <span class="footer-label">Built with</span>
+            <a href="https://www.djangoproject.com" target="_blank">
+                <img class="regular" src="{% static 'assets/django-small.png' %}" alt="The Django project">
+            </a>
+            <a href="https://www.wagtail.org" target="_blank">
+              <img class="regular" src="{% static 'assets/wagtail-small.png' %}" alt="Wagtail CMS">
+            </a>
+            <a href="https://www.terraform.io" target="_blank">
+                <img class="tf" src="{% static 'assets/terraform-small.png' %}" alt="Terraform">
+            </a>
+            <a href="https://cloud.google.com" target="_blank">
+                <img class="gcp" src="{% static 'assets/gcp-small.png' %}" alt="Google Cloud Platform">
+            </a>
+        </footer>
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/blog.js' %}"></script>
 

@@ -31,7 +31,7 @@ class BlogIndexPage(Page):
     def get_context(self, request):
         context: dict[str, Any] = super().get_context(request=request)
         # Reverse chronological order
-        blog_pages = self.get_children().live().order_by("-first_published_at")
+        blog_pages = self.get_children().type(BlogPage).live().order_by("-first_published_at")
         context["blog_pages"] = blog_pages
 
         return context
