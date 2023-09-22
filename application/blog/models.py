@@ -7,11 +7,12 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page, Orderable
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
+from . import blocks
 
 class HomePage(Page):
     body: RichTextField = RichTextField(blank=True)
@@ -31,7 +32,9 @@ class BlogIndexPage(Page):
     def get_context(self, request):
         context: dict[str, Any] = super().get_context(request=request)
         # Reverse chronological order
-        blog_pages = self.get_children().type(BlogPage).live().order_by("-first_published_at")
+        blog_pages = (
+            self.get_children().type(BlogPage).live().order_by("-first_published_at")
+        )
         context["blog_pages"] = blog_pages
 
         return context
@@ -50,6 +53,8 @@ class BlogPage(Page):
     tags: ClusterTaggableManager = ClusterTaggableManager(
         through=BlogPageTag, blank=True
     )
+
+    content: StreamField = StreamField([("title_and_text", blocks)])
 
     def main_image(self):
         gallery_item = self.gallery_images.first()
