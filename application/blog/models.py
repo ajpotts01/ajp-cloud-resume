@@ -14,6 +14,7 @@ from wagtail.snippets.models import register_snippet
 
 from . import blocks
 
+
 class HomePage(Page):
     body: RichTextField = RichTextField(blank=True)
 
@@ -54,7 +55,18 @@ class BlogPage(Page):
         through=BlogPageTag, blank=True
     )
 
-    content: StreamField = StreamField([("title_and_text", blocks)])
+    content: StreamField = StreamField(
+        [
+            ("title_and_text", blocks.TitleAndTextBlock()),
+            ("full_richtext", blocks.RTFBlock()),
+            ("simple_richtext", blocks.SimpleRTFBlock()),
+            ("cards", blocks.CardBlock()),
+            ("cta", blocks.CTABlock()),
+        ],
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
 
     def main_image(self):
         gallery_item = self.gallery_images.first()
@@ -77,7 +89,7 @@ class BlogPage(Page):
             heading="Blog information",
         ),
         FieldPanel("intro"),
-        FieldPanel("body"),
+        FieldPanel("content"),
         InlinePanel("gallery_images", label="Gallery images"),
     ]
 
