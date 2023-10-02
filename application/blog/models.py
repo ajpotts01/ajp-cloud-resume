@@ -6,13 +6,14 @@ from django.db import models
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
+from wagtail import blocks # Tutorial uses custom blocks... use wagtail default for now
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page, Orderable
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
-from . import blocks
+#from . import blocks
 
 
 class HomePage(Page):
@@ -55,13 +56,20 @@ class BlogPage(Page):
         through=BlogPageTag, blank=True
     )
 
+    # Custom tutorial blocks
+    # ("title_and_text", blocks.TitleAndTextBlock()),
+    # ("full_richtext", blocks.RTFBlock()),
+    # ("simple_richtext", blocks.SimpleRTFBlock()),
+    # ("cards", blocks.CardBlock()),
+    # ("cta", blocks.CTABlock()),
+
     content: StreamField = StreamField(
         [
-            ("title_and_text", blocks.TitleAndTextBlock()),
-            ("full_richtext", blocks.RTFBlock()),
-            ("simple_richtext", blocks.SimpleRTFBlock()),
-            ("cards", blocks.CardBlock()),
-            ("cta", blocks.CTABlock()),
+            ("title_and_text", blocks.CharBlock(form_classname="title")),
+            ("full_richtext", blocks.RichTextBlock()),
+            ("simple_richtext", blocks.RichTextBlock()),
+            ("cards", blocks.StructBlock()),
+            ("cta", blocks.StructBlock()),
         ],
         null=True,
         blank=True,
@@ -89,6 +97,8 @@ class BlogPage(Page):
             heading="Blog information",
         ),
         FieldPanel("intro"),
+        # The tutorial used specifies StreamFieldPanel but this no longer exists
+        # Use FieldPanel instead: https://docs.wagtail.org/en/v5.1.2/topics/streamfield.html
         FieldPanel("content"),
         InlinePanel("gallery_images", label="Gallery images"),
     ]

@@ -24,7 +24,9 @@
 
     <div class="intro">{{ page.intro }}</div>
 
-    {{ page.body|richtext }}
+    {% for block in page.content %}
+        {% include_block block %}
+    {% endfor %}
 
     {% for item in page.gallery_images.all %}
         <div style="float: left; margin: 10px">
@@ -33,20 +35,17 @@
         </div>
     {% endfor %}
 
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
-
     {% with tags=page.tags.all %}
         {% if tags %}
             <div class="tags">
                 <h3>Tags</h3>
                 {% for tag in tags %}
-                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
                 {% endfor %}
             </div>
         {% endif %}
     {% endwith %}
 
-    <p><a href="{{ page.get_parent.url }}">Back to index</a></p>
-
+    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
 
 {% endblock %}
