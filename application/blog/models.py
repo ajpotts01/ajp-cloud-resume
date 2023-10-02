@@ -6,14 +6,14 @@ from django.db import models
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
-from wagtail import blocks # Tutorial uses custom blocks... use wagtail default for now
+from wagtail import blocks  # Tutorial uses custom blocks... use wagtail default for now
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page, Orderable
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
-#from . import blocks
+# from . import blocks
 
 
 class HomePage(Page):
