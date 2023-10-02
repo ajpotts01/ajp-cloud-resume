@@ -60,6 +60,21 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core",
+    "blog",
+    # Wagtail
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
+    "modelcluster",
+    "taggit",
 ]
 
 MIDDLEWARE = [
@@ -70,6 +85,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Wagtail
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 ROOT_URLCONF = "cloud_resume.urls"
@@ -146,7 +163,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
+# STATIC_ROOT suggested by Wagtail
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "core/static/"]
 
@@ -156,6 +174,7 @@ STATICFILES_DIRS = [BASE_DIR / "core/static/"]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Uploaded media
+# For both original app and Wagtail
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
@@ -168,3 +187,9 @@ if os.getenv("ENVIRONMENT") == "GCR":
         "staticfiles": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"},
     }
     GS_DEFAULT_ACL = "publicRead"
+
+# Wagtail properties
+WAGTAIL_SITE_NAME = "AJP Cloud Blog"
+
+if len(ALLOWED_HOSTS) > 0:
+    WAGTAILADMIN_BASE_URL = ALLOWED_HOSTS[0]
