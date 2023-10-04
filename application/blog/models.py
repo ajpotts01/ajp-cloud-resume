@@ -66,7 +66,32 @@ class BlogPage(Page):
     content: StreamField = StreamField(
         [
             ("title_and_text", blocks.CharBlock(form_classname="title")),
-            ("full_richtext", blocks.RichTextBlock()),
+            (
+                "full_richtext",
+                blocks.RichTextBlock(
+                    features=[
+                        "h1",
+                        "h2",
+                        "h3",
+                        "h4",
+                        "h5",
+                        "bold",
+                        "italic",
+                        "ol",
+                        "ul",
+                        "hr",
+                        "link",
+                        "document-link",
+                        "images",
+                        "embed",
+                        "code",
+                        "blockquote",
+                        "superscript",
+                        "subscript",
+                        "strikethrough",
+                    ]
+                ),
+            ),
             ("simple_richtext", blocks.RichTextBlock()),
             ("cards", blocks.StructBlock()),
             ("cta", blocks.StructBlock()),
