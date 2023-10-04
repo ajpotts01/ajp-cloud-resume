@@ -1,5 +1,13 @@
 html {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* 1200px / 16px = 75em */
@@ -46,7 +54,6 @@ html {
     width: 100%;
     box-shadow: 0 0.5px 0;
     font-size: 1.5em;
-    height: 5vh;
     background-color: white;
     min-height: 3.25rem;
 }
@@ -54,12 +61,8 @@ html {
 footer {
     display: flex;
     justify-content: flex-end;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
     font-size: 1em;
-    height: 3vh;
     background-color: white;
 }
 
@@ -92,8 +95,8 @@ footer span.footer-label {
     padding: 3rem 3rem;
     color: black;
     background-color: white;
-    width: 100%;
     font-size: 1em;
+    flex: 1;
 }
 
 .content h1 {
