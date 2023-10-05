@@ -11,25 +11,25 @@ body {
 }
 
 /* 1200px / 16px = 75em */
-@media (max-width: 75em) {
+/* @media (max-width: 75em) {
     html {
         font-size: 60%;
     }
-}
+} */
 
 /* 980px / 16px = 61.25em */
-@media (max-width: 61.25em) {
+/* @media (max-width: 61.25em) {
     html {
         font-size: 58%;
     }
-}
+} */
 
 /* 460px / 16px = 28.75em */
-@media (max-width: 28.75em) {
+/* @media (max-width: 28.75em) {
     html {
         font-size: 55%;
     }
-}
+} */
 
 .nav a {
     display: block;
@@ -44,6 +44,13 @@ body {
     text-decoration: underline;
 }
 
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .nav {
     display: flex;
     justify-content: flex-end;
@@ -56,6 +63,12 @@ body {
     font-size: 1.5em;
     background-color: white;
     min-height: 3.25rem;
+}
+
+@media (max-width: 425px) {
+    .nav {
+        font-size: 1.25rem;
+    }
 }
 
 footer {
@@ -104,7 +117,7 @@ footer span.footer-label {
 }
 
 /* Full size */
-/* @media (min-width: 900px) { */
+@media screen and (min-width: 1024px) {
     .resume {
         display: grid;
         grid-gap: 5px;
@@ -117,34 +130,40 @@ footer span.footer-label {
         "work certifications"
         "work education";
     }
-/* } */
+}
 
 /* Tablet size */
-/* @media (min-width: 700px) {
+@media screen and (max-width: 768px) {
     .resume {
+        display: grid;
+        grid-gap: 5px;
         grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto auto auto;
     
         grid-template-areas: 
         "name photo"
         "core-skills core-skills"
         "work work"
-        "certifications certifiations"
+        "certifications certifications"
         "education education";
     }
-} */
+}
 
-/* .resume {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-        "photo"
-        "name"
-        "core-skills"
-        "work"
-        "certifications"
-        "education";
-    grid-gap: 5px;
-} */
+@media screen and (max-width: 425px) {
+    .resume {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+            "photo"
+            "name"
+            "core-skills"
+            "work"
+            "certifications"
+            "education";
+        grid-gap: 5px;
+    }
+}
 
 .section-header {
     border: 1px black;

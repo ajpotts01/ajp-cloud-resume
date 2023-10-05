@@ -4,13 +4,16 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
   </head>
   <body>
     <navbar id="navbar" class="nav">
-      <a href="{% url 'core:home' %}">About</a>
-      <a href="{% url 'core:resume' %}">Resume</a>
-      <a href="/blog">Blog</a>
-      <a id="profile-link" target="_blank" href="https://www.github.com/ajpotts01">GitHub</a>
+      <ul class="nav-list">      
+        <li><a href="{% url 'core:home' %}">About</a></li>
+        <li><a href="{% url 'core:resume' %}">Resume</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a id="profile-link" target="_blank" href="https://www.github.com/ajpotts01">GitHub</a></li>
+      </ul> 
     </navbar>
     <main class="content">
       {% block content %}
