@@ -75,6 +75,8 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+    # Third-party Wagtail
+    "wagtailcodeblock",
 ]
 
 MIDDLEWARE = [
@@ -193,3 +195,24 @@ WAGTAIL_SITE_NAME = "AJP Cloud Blog"
 
 if len(ALLOWED_HOSTS) > 0:
     WAGTAILADMIN_BASE_URL = ALLOWED_HOSTS[0]
+
+WAGTAIL_CODE_BLOCK_LANGUAGES = (
+    # Defaults
+    ("bash", "Bash/Shell"),
+    ("css", "CSS"),
+    ("diff", "diff"),
+    ("html", "HTML"),
+    ("javascript", "Javascript"),
+    ("json", "JSON"),
+    ("python", "Python"),
+    ("scss", "SCSS"),
+    ("yaml", "YAML"),
+    ("django", "Django/Jinja2"),
+    # Extras just in case
+    ("csharp", "C#"),
+    ("go", "Go"),
+    ("hcl", "HCL"),
+    ("markdown", "Markdown"),
+    ("powershell", "PowerShell"),
+    ("sql", "SQL"),
+)
