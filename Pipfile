@@ -12,6 +12,7 @@ django-storages = {extras = ["google"], version = "*"}
 google-cloud-secret-manager = "*"
 dj-database-url = "*"
 wagtail = "==5.1.1"
+wagtailcodeblock = "*"
 
 [dev-packages]
 

@@ -13,6 +13,9 @@ from wagtail.models import Page, Orderable
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
+from wagtailcodeblock.blocks import CodeBlock
+
+# Custom blocks from tutorial - disabled now
 # from . import blocks
 
 
@@ -95,6 +98,7 @@ class BlogPage(Page):
             ("simple_richtext", blocks.RichTextBlock()),
             ("cards", blocks.StructBlock()),
             ("cta", blocks.StructBlock()),
+            ("code", CodeBlock(label="Code")),
         ],
         null=True,
         blank=True,
