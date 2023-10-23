@@ -85,7 +85,7 @@ class BlogPage(Page):
                         "hr",
                         "link",
                         "document-link",
-                        "images",
+                        "image",
                         "embed",
                         "code",
                         "blockquote",
