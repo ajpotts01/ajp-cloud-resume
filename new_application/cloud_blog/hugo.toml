@@ -1,4 +1,0 @@
-baseURL = 'https://ajpcloudblog.com/'
-languageCode = 'en-au'
-title = 'AJP Cloud Blog'
-theme = 'hugo-PaperMod'
