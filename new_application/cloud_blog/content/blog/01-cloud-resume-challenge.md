@@ -5,6 +5,8 @@ date = 2023-10-02
 draft = false
 show_date = true
 tags = ["blog", "post", "gcp", "dev"]
+show_title = true
+show_subtitle = true
 +++
 
 This is the first post in a series of posts about how I attempted the Cloud Resume Challenge.

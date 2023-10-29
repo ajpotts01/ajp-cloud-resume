@@ -83,6 +83,19 @@ footer span.footer-label {
   margin-right: 10px;
 }
 
+.circle {
+  border       : 1px solid black;
+  height       : 280px;
+  width        : 280px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+}
+
 /*
 .footer {
     max-width: calc(var(--main-width) + var(--gap) * 2);
