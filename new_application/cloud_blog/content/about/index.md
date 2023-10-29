@@ -1,9 +1,8 @@
 +++
+title = 'Welcome'
 draft = true
 show_date = false
 +++
-
-# Welcome
 
 Thank you for visiting my website.
 
