@@ -13,7 +13,7 @@ This is the first post in a series of posts about how I attempted the Cloud Resu
 
 Intro: This post
 
-Part 1: Building the Blog Pt. 1: Starting the web application
+Part 1: [Starting the web application]({{< ref "/blog/02-building-the-blog-pt-1/post" >}})
 
 Welcome to the blog.
 
