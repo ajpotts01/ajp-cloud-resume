@@ -65,7 +65,7 @@ You **can** use Terraform to create these, but I don't currently. I'm sure it's 
 
 A Terraform project is free-form, but I like to structure my projects with folders per cloud service I'm using. The full details of it can be found in the site's repository, but it generally looks like this:
 
-![Terraform Project Example](/blog/02-building-the-blog-pt-1/terraform_project_example.png)
+![Terraform Project Example](/img/blog/02-building-the-blog-pt-1/terraform_project_example.png)
 
 Each folder contains the code for a particular service (e.g. cloud storage, service APIs, the load balancer, etc). The `main.tf` file in the root of the Terraform project ties it all together.
 
@@ -79,7 +79,7 @@ In both cases I add these files to my [.gitignore](https://git-scm.com/docs/giti
 
 Terraform code is written in its own declarative language, [HCL](https://developer.hashicorp.com/terraform/language/syntax/configuration). The code below defines a Google Cloud Storage bucket:
 
-![Terraform code example - GCS](/blog/02-building-the-blog-pt-1/terraform_gcs_example.png)
+![Terraform code example - GCS](/img/blog/02-building-the-blog-pt-1/terraform_gcs_example.png)
 
 Once everything is set up and ready to run, the following commands set everything up for me:
 
