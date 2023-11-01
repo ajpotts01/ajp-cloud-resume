@@ -1,6 +1,6 @@
 +++
 title = 'Welcome'
-draft = true
+draft = false
 show_date = false
 +++
 

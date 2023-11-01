@@ -7,3 +7,8 @@ variable "region" {
   description = "Region to create buckets in"
   type        = string
 }
+
+variable "project_id" {
+  description = "Target project ID"
+  type        = string
+}

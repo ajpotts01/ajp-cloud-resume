@@ -10,6 +10,19 @@ header {
   /* margin-bottom: 1rem; */
 }
 
+.content {
+  /* padding: 3rem 3rem;
+  color: black;
+  background-color: white;
+  font-size: 1em;
+  flex: 1; */
+  position: relative;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  max-width: calc(var(--main-width) + var(--gap) * 2);
+  margin: auto;
+  padding: var(--gap);
+}
+
 .nav {
   display: flex;
   justify-content: flex-end;

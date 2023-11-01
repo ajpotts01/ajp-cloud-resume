@@ -10,8 +10,8 @@ show_subtitle = false
 # Alexander Potts
 ## Software and Data Engineer
 
-{{< img-custom src="/linkedin-original.svg" width="25px" link="https://www.linkedin.com/in/alexander-potts-9b4a41aa" >}}
-{{< img-circle src="/me.jpeg" alt="Photo of the author of this website." >}}
+{{< img-custom src="/img/resume/linkedin-original.svg" width="25px" link="https://www.linkedin.com/in/alexander-potts-9b4a41aa" >}}
+{{< img-circle src="/img/resume/me.jpeg" alt="Photo of the author of this website." >}}
 
 ---
 ## Core Skills
