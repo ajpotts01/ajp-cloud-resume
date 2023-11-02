@@ -1,10 +1,9 @@
-name: cd-application
+name: ci-hugo-application
 on:
-  push:
+  pull_request:
     branches: [ main ]
     paths:
       - "application/**"
-  workflow_dispatch:
 
 env:
   gcp_project: ${{ secrets.GCP_PROJECT }}

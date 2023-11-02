@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - "application/**"
+      - "old_application/**"
 
 env:
   lol: "yep"
