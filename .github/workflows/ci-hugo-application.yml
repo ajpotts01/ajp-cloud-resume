@@ -6,7 +6,7 @@ on:
       - "application/**"
 
 env:
-  hugo_version: 0.199.0
+  hugo_version: 0.119.0
 
 
 jobs:

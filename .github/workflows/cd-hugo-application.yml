@@ -9,7 +9,7 @@ on:
 env:
   gcp_project: ${{ secrets.GCP_PROJECT }}
   firebase_token: ${{ secrets.FIREBASE_TOKEN }}
-  hugo_version: 0.199.0
+  hugo_version: 0.119.0
 
 
 jobs:
