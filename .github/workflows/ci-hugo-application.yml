@@ -6,22 +6,16 @@ on:
       - "application/**"
 
 env:
-  gcp_project: ${{ secrets.GCP_PROJECT }}
-  firebase_token: ${{ secrets.FIREBASE_TOKEN }}
   hugo_version: 0.199.0
 
 
 jobs:
-  cd:
+  ci:
     runs-on: ubuntu-22.04
 
     steps:
       - name: Source code - checkout main
         uses: actions/checkout@v3
-      
-      - name: Setup Firebase
-        run: |
-          curl -sL firebase.tools | bash
 
       - name: Setup Hugo
         run: |
@@ -33,8 +27,3 @@ jobs:
         run: |
           cd application/cloud_blog
           hugo
-
-      - name: Deploy site
-        run: |
-          cd application/cloud_blog
-          firebase deploy --only hosting --token ${{ env.firebase_token }}
