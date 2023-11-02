@@ -45,9 +45,9 @@ You will need a Google Cloud project for this. First, enable the following APIs 
 
 I've provided links, but you may need the right project selected to open them properly. If these links aren't helping, search for them by typing "biglake", "dataproc" and "bigquery connection" into your GCP search bar:
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/biglake_api.png" width="700px" alt="Searching for BigLake API" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/biglake_api.png" class="blog" alt="Searching for BigLake API" >}}
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/turn_on_biglake.png" width="700px" alt="Searching for BigLake API" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/turn_on_biglake.png" class="blog" alt="Searching for BigLake API" >}}
 
 At this time, BigLake and its metastore capabilities do not have their own user interface. You turn on the API, and you're good to go, with metastore-managed tables appearing in BigQuery if you set up the proper connections.
 
@@ -55,7 +55,7 @@ Dataproc is GCP's managed Spark service. It supports both managed cluster and se
 
 Next, Private Google Access on a VPC subnet is required for Dataproc Serverless to run. In my example, I'm just applying it to the `default` subnet.
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/vpc_private_google_access.png" width="700px" alt="VPC: Private Google Access" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/vpc_private_google_access.png" class="blog" alt="VPC: Private Google Access" >}}
 
 Be aware that this is open up to the world, and Google recommends using network tags and firewall rules to limit it to the subnet you're using (in my case, the `default` one in `australia-southeast1`). More information [here](https://cloud.google.com/dataproc-serverless/docs/concepts/network).
 
@@ -64,9 +64,9 @@ Next, go to BigQuery, and:
 * Create a dataset (I named it `nasdaq`)
 * Create an external connection to BigLake.
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/bigquery_ext_conn.png" width="700px" alt="Creating a BigQuery external connection" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/bigquery_ext_conn.png" class="blog" alt="Creating a BigQuery external connection" >}}
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/biglake_conn_settings.png" width="700px" alt="BigLake Connection Settings" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/biglake_conn_settings.png" class="blog" alt="BigLake Connection Settings" >}}
 
 Finally, [create a service account](https://cloud.google.com/iam/docs/service-accounts-create) with the following roles:
 
@@ -110,15 +110,15 @@ A few notes:
 
 Once this has all been run, the destination bucket will have a folder created for the Iceberg catalog, the data you write to it, and metadata that makes all of Iceberg's magic possible.
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/biglake_bucket.png" width="700px" alt="BigLake folder in GCS Bucket" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/biglake_bucket.png" class="blog" alt="BigLake folder in GCS Bucket" >}}
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/iceberg_metadata.png" width="700px" alt="BigLake metadata in GCS Bucket" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/iceberg_metadata.png" class="blog" alt="BigLake metadata in GCS Bucket" >}}
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/iceberg_data.png" width="700px" alt="BigLake data in GCS Bucket" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/iceberg_data.png" class="blog" alt="BigLake data in GCS Bucket" >}}
 
 If we go straight over to BigQuery, we'll see all the tables and their data. These will be external tables with the source URIs pointing at our metastore!
 
-{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/success_example.png" width="700px" alt="Iceberg data successfully showing in BigQuery" >}}
+{{< img-custom src="/img/blog/04-apache-iceberg-on-gcp/success_example.png" class="blog" alt="Iceberg data successfully showing in BigQuery" >}}
 
 But that prompts the question...
 

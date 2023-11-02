@@ -2,7 +2,6 @@
 baseURL: "https://ajpcloudblog.com/"
 languageCode: "en-au"
 title: "AJP Cloud Blog"
-theme: "ajp-cloud-blog"
 
 params:
   title: "AJP Cloud Blog"

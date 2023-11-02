@@ -1,0 +1,15 @@
+:root {
+    --gap: 24px;
+    --header-height: 52px;
+    --footer-height: 30px;
+    --main-width: 720px;
+    --nav-width: 1024px;
+}
+
+@media screen and (max-width: 768px) 
+{
+    :root
+    {
+        --gap: 14px;
+    }
+}

@@ -77,7 +77,7 @@ There are quite a few more considerations when it comes to deploying the site:
 
 This pipeline triggers on any merge into the `main` branch, but I also added a `workflow_dispatch` trigger. This gives me a neat button on the Actions page for my repo so I can trigger a deployment any time I want to.
 
-{{< img-custom src="/img/blog/03-building-the-blog-pt-2/cd_dispatch_example.png" width="768px" alt="Workflow Dispatch button in Github Actions" >}}
+{{< img-custom src="/img/blog/03-building-the-blog-pt-2/cd_dispatch_example.png" class="blog" alt="Workflow Dispatch button in Github Actions" >}}
 
 The pipeline starts out largely the same as CI, but needs to activate a service account for deployment. This service account is managed using [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_service_account). In addition, I've set up a bucket for Cloud Build logs to be stored in. This appears to be a [GCP requirement](https://cloud.google.com/build/docs/securing-builds/store-manage-build-logs#store-custom-bucket) for Cloud Build to succeed with a service account.
 
@@ -85,7 +85,7 @@ In my case, I've made the service account storage admin in general. For a servic
 
 On that note, secrets are stored in Github. To access them on your own repositories, check `Settings -> Secrets and Variables -> Actions`
 
-{{< img-custom src="/img/blog/03-building-the-blog-pt-2/secrets.png" width="768px" alt="Secrets in Github Actions" >}}
+{{< img-custom src="/img/blog/03-building-the-blog-pt-2/secrets.png" class="blog" alt="Secrets in Github Actions" >}}
 
 Secrets are then referenced in your pipelines as in the above code block.
 

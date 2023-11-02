@@ -50,7 +50,7 @@ I ended up going with `wagtailcodeblock` as it turned out [embedding gists was n
 
 This functionality was in part provided by [PrismJS](https://prismjs.com/). I didn't quite figure out whether it was the Python package or PrismJS causing it, but the code snippets - while large and presentable - were always on top of every page element, including my nav bar.
 
-{{< img-custom src="/img/blog/06-building-the-blog-pt-4/why_prismjs.png" width="700px" alt="Wagtail code block overlapping the nav bar" >}}
+{{< img-custom src="/img/blog/06-building-the-blog-pt-4/why_prismjs.png" class="blog" alt="Wagtail code block overlapping the nav bar" >}}
 
 Not ideal. Despite my attempts, no CSS could fix this.
 

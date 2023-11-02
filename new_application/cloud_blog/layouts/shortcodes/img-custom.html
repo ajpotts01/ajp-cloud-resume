@@ -3,7 +3,7 @@
 {{ end }}
 <img 
     {{ with .Get "src" }} src="{{ . }}" {{ end }}
-    {{ with .Get "width" }} width="{{ . }}" {{ end }}
+    {{ with .Get "class" }} class="{{ . }}" {{ end }}
     {{ with .Get "alt" }} alt="{{ . }}" {{ end }}>
 {{ if .Get "link" }}
 </a>
