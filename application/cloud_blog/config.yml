@@ -1,0 +1,42 @@
+### Site settings
+baseURL: "https://ajpcloudblog.com/"
+languageCode: "en-au"
+title: "AJP Cloud Blog"
+
+params:
+  title: "AJP Cloud Blog"
+  description: "Resume and blog for cloud technologist in Sydney, Australia"
+  DateFormat: "January 1, 2000"
+  defaultTheme: light
+  disableThemeToggle: true
+
+  homeInfoParams:
+    Title: Welcome
+    Content: |
+      Welcome to my website.
+      I am a cloud technologist based in Sydney, Australia.
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/ajpotts01"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/alexander-potts-9b4a41aa/"
+
+menu:
+  main:
+    - identifier: about
+      name: About
+      url: /
+      weight: 10
+    - identifier: resume
+      name: Resume
+      url: /resume/
+      weight: 20
+    - identifier: blog
+      name: Blog
+      url: /blog/
+      weight: 30
+    - identifier: github
+      name: Github
+      url: https://www.github.com/ajpotts01
+      weight: 40

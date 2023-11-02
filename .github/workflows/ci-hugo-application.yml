@@ -1,0 +1,29 @@
+name: ci-hugo-application
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "application/**"
+
+env:
+  hugo_version: 0.119.0
+
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Source code - checkout main
+        uses: actions/checkout@v3
+
+      - name: Setup Hugo
+        run: |
+          curl -L "https://github.com/gohugoio/hugo/releases/download/v${{ env.hugo_version }}/hugo_${{ env.hugo_version }}_Linux-64bit.tar.gz" --output hugo.tar.gz
+          tar -xvzf hugo.tar.gz
+          sudo mv hugo /usr/local/bin
+
+      - name: Build site
+        run: |
+          cd application/cloud_blog
+          hugo

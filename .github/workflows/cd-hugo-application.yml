@@ -1,0 +1,41 @@
+name: cd-hugo-application
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "application/**"
+  workflow_dispatch:
+
+env:
+  gcp_project: ${{ secrets.GCP_PROJECT }}
+  firebase_token: ${{ secrets.FIREBASE_TOKEN }}
+  hugo_version: 0.119.0
+
+
+jobs:
+  cd:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Source code - checkout main
+        uses: actions/checkout@v3
+      
+      - name: Setup Firebase
+        run: |
+          curl -sL firebase.tools | bash
+
+      - name: Setup Hugo
+        run: |
+          curl -L "https://github.com/gohugoio/hugo/releases/download/v${{ env.hugo_version }}/hugo_${{ env.hugo_version }}_Linux-64bit.tar.gz" --output hugo.tar.gz
+          tar -xvzf hugo.tar.gz
+          sudo mv hugo /usr/local/bin
+
+      - name: Build site
+        run: |
+          cd application/cloud_blog
+          hugo
+
+      - name: Deploy site
+        run: |
+          cd application/cloud_blog
+          firebase deploy --only hosting --token ${{ env.firebase_token }}

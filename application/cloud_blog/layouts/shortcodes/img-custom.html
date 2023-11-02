@@ -1,0 +1,10 @@
+{{ if .Get "link" }}
+<a {{ with .Get "link" }} href="{{ . }}" {{ end }} target="_blank">
+{{ end }}
+<img 
+    {{ with .Get "src" }} src="{{ . }}" {{ end }}
+    {{ with .Get "class" }} class="{{ . }}" {{ end }}
+    {{ with .Get "alt" }} alt="{{ . }}" {{ end }}>
+{{ if .Get "link" }}
+</a>
+{{ end }}

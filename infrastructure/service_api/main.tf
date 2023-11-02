@@ -21,3 +21,13 @@ resource "google_project_service" "dns_service" {
 resource "google_project_service" "secret_manager" {
   service = "secretmanager.googleapis.com"
 }
+
+resource "google_project_service" "cloud_resource_manager" {
+  project = var.project_id
+  service = "cloudresourcemanager.googleapis.com"
+}
+
+resource "google_project_service" "service_usage" {
+  project = var.project_id
+  service = "serviceusage.googleapis.com"
+}

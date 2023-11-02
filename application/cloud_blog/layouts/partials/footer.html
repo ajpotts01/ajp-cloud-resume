@@ -1,0 +1,19 @@
+{{ $hugo_img := resources.Get "images/hugo.png" }}
+{{ $gcp_img := resources.Get "images/gcp-small.png" }}
+{{ $fbase_img := resources.Get "images/firebase.png" }}
+{{ $tf_img := resources.Get "images/terraform-small.png" }}
+
+<span class="footer-label">Built with</span>
+<a href="https://www.gohugo.io" target="_blank">
+    <img class="regular" src="{{ $hugo_img.RelPermalink }}" alt="Hugo: The world's fastest framework for building websites">
+</a>
+<a href="https://firebase.google.com" target="_blank">
+    <img class="regular" src="{{ $fbase_img.RelPermalink }}" alt="Firebase">
+</a>
+<a href="https://www.terraform.io" target="_blank">
+    <img class="tf" src="{{ $tf_img.RelPermalink }}" alt="Terraform">
+</a>
+<a href="https://cloud.google.com" target="_blank">
+    <img class="gcp" src="{{ $gcp_img.RelPermalink }}" alt="Google Cloud Platform">
+</a>
+<!-- <p>Copyright {{ now.Year }}. All rights reserved.</p> -->

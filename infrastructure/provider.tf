@@ -12,3 +12,14 @@ terraform {
     }
   }
 }
+
+provider "google-beta" {
+  project = var.project_id
+  alias = "main"
+}
+
+provider "google-beta" {
+  project = var.project_id
+  alias = "no_user_project_override"
+  user_project_override = false
+}
