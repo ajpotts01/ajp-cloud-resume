@@ -1,4 +1,0 @@
-[submodule "new_application/cloud_blog/themes/hugo-PaperMod"]
-	path = new_application/cloud_blog/themes/hugo-PaperMod
-	url = https://www.github.com/adityatelange/hugo-PaperMod
-	branch = master
