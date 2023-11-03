@@ -8,17 +8,7 @@ body {
   margin: 1rem;
 }
 
-header {
-  /* border-bottom: 1px solid #222; */
-  /* margin-bottom: 1rem; */
-}
-
 .content {
-  /* padding: 3rem 3rem;
-  color: black;
-  background-color: white;
-  font-size: 1em;
-  flex: 1; */
   position: relative;
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
   max-width: calc(var(--main-width) + var(--gap) * 2);
@@ -31,9 +21,6 @@ header {
   justify-content: flex-end;
   margin-inline-start: auto;
   margin-inline-end: auto;
-  /* position: fixed; */
-  /* top: 0; */
-  /* left: 0; */
   align-items: stretch;
   width: 100%;
   max-width: calc(var(--nav-width) + var(--gap) * 2);
@@ -83,9 +70,15 @@ a {
 footer {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  max-width: calc(var(--nav-width) + var(--gap) * 2);
   font-size: 1em;
   background-color: white;
+  margin: auto;
+  /* padding: calc((var(--footer-height) - var(--gap))/2)var(--gap); */
+  /* text-align: center; */
+  line-height: 24px;
+  /* font-size: 12px; */
+  /* color: var(--secondary); */
 }
 
 img.blog {
