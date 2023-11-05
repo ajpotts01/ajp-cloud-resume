@@ -11,7 +11,6 @@ env:
   firebase_token: ${{ secrets.FIREBASE_TOKEN }}
   hugo_version: 0.119.0
 
-
 jobs:
   cd:
     runs-on: ubuntu-22.04
