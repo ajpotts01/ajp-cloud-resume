@@ -11,26 +11,12 @@ module "service-account" {
   depends_on = [module.service-api]
 }
 
-module "load-balancer" {
-  source      = "./load_balancer"
-  app_name    = var.app_name
-  domain_name = var.domain_name
-  depends_on  = [module.service-account]
-}
-
 module "storage-bucket" {
   source     = "./storage_bucket"
   app_name   = var.app_name
   project_id = var.project_id
   region     = "us-central1"
   depends_on = [module.service-account]
-}
-
-module "secret-manager" {
-  source     = "./secret_manager"
-  app_name   = var.app_name
-  region     = "us-central1"
-  depends_on = [module.service-api]
 }
 
 module "firebase" {
