@@ -4,7 +4,7 @@ subtitle = 'Declarative, source-controllable configuration'
 date = 2023-12-21
 draft = false
 show_date = true
-tags = ["gcp", "serverless", "cloud run", "devops"]
+tags = ["gcp", "serverless", "cloud run", "devops", "golang", "ci/cd", "github"]
 show_title = true
 show_subtitle = true
 +++
@@ -56,7 +56,7 @@ Cloud Run is a managed version of an open-source framework called [KNative](http
 
 However, the upside of its roots is that we can specify a Kubernetes-style [service YAML file](https://kubernetes.io/docs/concepts/services-networking/service/) to declaratively configure our service.
 
-The full specification for the YAML can be found [here](https://cloud.google.com/run/docs/reference/yaml/v1), but a simpler snippet is in the deployment guide for Cloud Run [here](https://cloud.google.com/run/docs/deploying#service)
+The full specification for the YAML can be found [here](https://cloud.google.com/run/docs/reference/yaml/v1), but a simpler snippet is in the deployment guide for Cloud Run [here](https://cloud.google.com/run/docs/deploying#service).
 
 This can be a bit much to wade through, so I recommend learning the same way I did: deploying your Cloud Run service in a development environment using either GCP UI or CLI, then pulling the auto-generated YAML file it creates and editing that to your heart's content.
 
@@ -84,12 +84,12 @@ It is also possible to link secrets in GCP's secret manager to the container usi
 
 The only gotcha here is my `DOMAIN_NAME` environment variable. The domain name is needed to prefix any shortened URLs with the domain the service is running from. It is not known at service deploy time, unless you have bought a domain for the service and know what to put in here ahead of time. I don't, so I'm using a little trick: use `gcloud run services describe` to get my newly-deployed service's URL, and use `gcloud run services update` to inject a new environment variable into the container.
 
-I am not sure if there's a better way to do this, so please contact me on Linkedin if you have any suggestions.
-
 This same approach can also be used for Cloud Run Jobs - my first production use of this method was done with a Job, with no issues. The full reference is [here](https://cloud.google.com/run/docs/reference/yaml/v1#job) in case you are interested - some of the static configuration values need to be slightly different. 
 
-In any case, this approach offers a declarative way of deploying your service configuration. To me, it feels a bit cleaner - source controlled in a separate section of your repository, not getting lost in all the other script commands in a CI/CD pipeline. Back in my site deployment blogs, I noted that since I had a comma-separated list of allowed hosts for Django, I had to specify a substitute delimiter for my environment variables at deploy time. This approach would have avoided having to do this. It is slightly more complex than just writing your deploy scripts in the Github workflow, but I think over time it will pay off with a more understandable code base and a smaller blast radius if you need to make changes.
+In any case, this approach offers a declarative way of deploying your service configuration. To me, it feels a bit cleaner - source controlled in a separate section of your repository, not getting lost in all the other script commands in a CI/CD pipeline.
 
-I hope this has been useful. Feel free to contact me on [LinkedIn](https://linkedin.com/alexander-potts-9b4a41aa/) if you have any questions or suggestions. 
+Back in my site deployment blogs, I noted that since I had a comma-separated list of allowed hosts for Django, I had to specify a substitute delimiter for my environment variables at deploy time. This approach would have avoided having to do this. It is slightly more complex than just writing your deploy scripts in the Github workflow, but I think over time it will pay off with a more understandable code base and a smaller blast radius if you need to make changes.
+
+I hope this has been useful. Feel free to contact me on [LinkedIn](https://linkedin.com/alexander-potts-9b4a41aa/) if you have any questions/suggestions, or you have a better way for me to inject my domain name into my container. 
 
 Thanks for reading.
