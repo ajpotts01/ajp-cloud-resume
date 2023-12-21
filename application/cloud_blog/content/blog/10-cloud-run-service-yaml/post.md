@@ -94,6 +94,8 @@ In any case, this approach offers a declarative way of deploying your service co
 
 Back in my site deployment blogs, I noted that since I had a comma-separated list of allowed hosts for Django, I had to specify a substitute delimiter for my environment variables at deploy time. This approach would have avoided having to do this. It is slightly more complex than just writing your deploy scripts in the Github workflow, but I think over time it will pay off with a more understandable code base and a smaller blast radius if you need to make changes.
 
+Finally, Google seems to endorse this method via a YouTube video [here](https://www.youtube.com/watch?v=_H0Q_0oz5hM). It doesn't cover some pieces of this blog, but it is still worth watching for a section on canary deployments.
+
 I hope this has been useful. Feel free to contact me on [LinkedIn](https://linkedin.com/alexander-potts-9b4a41aa/) if you have any questions/suggestions, or you have a better way for me to inject my domain name into my container. 
 
 Thanks for reading.
