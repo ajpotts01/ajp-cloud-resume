@@ -11,7 +11,7 @@ show_subtitle = true
 
 Automated deployments and continuous delivery always has a bit of an open-world video game feel to it. There are many different ways one can deploy a piece of software and at times it feels like there's no right or wrong way, just your preferred one.
 
-The whole "DevOps" engineering topic has been a favourite lately. This is not influenced only by the construction of this blog. It is also influenced by my work as a data engineer over the last two years. "DevOps" in itself shouldn't really be the term for someone's role - but it has been co-opted over time in the same way that software "engineers" stole that label from the real engineers out there. That's an argument for another day.
+The whole "DevOps" engineering topic has been a favourite lately. This is not influenced only by the construction of this blog. It is also influenced by my work as a data engineer over the last two years. There is an argument that "DevOps" in itself shouldn't really be the term for someone's role. Maybe that's right, but it has been co-opted over time in the same way that software "engineers" stole that label from the real engineers out there, and the word "literally" doesn't mean "literally" anymore. That's an argument for another day.
 
 In my data engineering work, I have largely used shell commands in CI/CD runners to get my deployments done. These are usually interacting with cloud CLIs, building [Docker](https://www.docker.com) images, running unit tests, etc. These work fine, but I'm sure everyone reading this knows of the pain of getting shell commands exactly right.
 
@@ -77,6 +77,10 @@ The full Github workflow is publicly available [here](https://github.com/ajpotts
 {{< gist ajpotts01 c06793eb3c07ee106a9ba472f023a612 >}}
 
 The first step of this excerpt uses [`sed`](https://www.gnu.org/software/sed/manual/sed.html) to do global replaces of the placeholder values with secrets stored in my Github repository. Each `sed` call pipes its output into the next call, and the final result is output to a `service.yaml` file. There are no real surprises here - I have gone into detail about using Github secrets in examples during my posts on building this blog. I generally set the secrets up as environment variables for the workflow, which is why they are referenced with the `env` prefix instead of `secrets`.
+
+I think there are ways to reduce the code in the pipeline even more:
+- `sed` has a `-e` switch to allow multiple commands to run at once, instead of my pipe (`|`) method
+- Moving some of these longer commands to a shell script might make things a bit cleaner. DevOps people - let me know if you do or don't like this idea! 
 
 It is also possible to link secrets in GCP's secret manager to the container using similar YAML. The below example would be used if I wanted my `DATABASE_ID` environment variable to be pulled from secret manager. The "key" is actually the version of the secret you want - this can be a number, or just the latest value.
 
