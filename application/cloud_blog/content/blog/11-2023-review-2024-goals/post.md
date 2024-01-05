@@ -12,7 +12,7 @@ show_subtitle = true
 This is just a short post covering some highlights of my learning in 2023 and what I hope to study in 2024.
 
 #### Events
-- DataEngBytes was a great day of data and ML talks. My favourite was probably [Ben Boyter's talk](https://www.youtube.com/watch?v=ovXPxdJJSU8) on the possibilities of data processing with [Go](https://go.dev). Utah Go community regular Miriah Peterson is another figure to follow in this space. She's actually doing a [presentation](https://www.linkedin.com/events/end2enddataanalyticsfornon-prof7148080306338578432/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_content%3BYB8KerkfQQqDiuN4pLCPYA%3D%3D) tomorrow on end-to-end analytics with the language.
+- [DataEngBytes](https://dataengconf.com.au/) was a great day of data and ML talks. My favourite was probably [Ben Boyter's talk](https://www.youtube.com/watch?v=ovXPxdJJSU8) on the possibilities of data processing with [Go](https://go.dev). Utah Go community regular [Miriah Peterson](https://www.youtube.com/c/Miriahpeterson) is another figure to follow in this space. She's actually doing a [presentation](https://www.linkedin.com/events/end2enddataanalyticsfornon-prof7148080306338578432/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_content%3BYB8KerkfQQqDiuN4pLCPYA%3D%3D) tomorrow on end-to-end analytics with the language.
 
 - On the topic of Go, the Golang Syd meetup has had killer talks in both events I attended in 2023:
   - [Evergen](https://evergen.energy/) using Go in their renewable energy platform
