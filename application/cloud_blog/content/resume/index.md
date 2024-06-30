@@ -8,7 +8,7 @@ show_subtitle = false
 +++
 
 # Alexander Potts
-## Software and Data Engineer
+## Data Engineer
 
 {{< img-custom src="/img/resume/linkedin-original.svg" width="25px" link="https://www.linkedin.com/in/alexander-potts-9b4a41aa" >}}
 {{< img-circle src="/img/resume/me.jpeg" alt="Photo of the author of this website." >}}
@@ -91,20 +91,27 @@ Graduate through to senior developer position. Focus on quoting/application tool
 ---
 ## Certifications
 ---
-{{< img-custom src="/img/resume/gcpde.png" width="100px" link="https://google.accredible.com/5ec7018d-7f13-4afa-9de9-3efa72966a40" alt="Google Professional Data Engineer Certification" >}}
+{{< img-custom src="/img/resume/professional-cloud-security-engineer-certification.png" width="100px"
+link="https://www.credly.com/badges/25eac08c-2001-40ae-a830-08d589794340/public_url" alt="Google Professional Cloud Security Engineer Certification" >}}
+
+**Professional Cloud Security Engineer**  
+Google  
+June 28 2024 - June 28 2026  
+
+{{< img-custom src="/img/resume/professional-data-engineer-certification.png" width="100px" link="https://www.credly.com/badges/b79d4cdb-1afc-4cb3-a5d2-573b69624e98/public_url" alt="Google Professional Data Engineer Certification" >}}
 
 **Professional Data Engineer**  
 Google  
-April 14 2023 - April 14 2025
+April 14 2023 - April 14 2025  
 
 {{< img-custom src="/img/resume/power-platform-app-maker-600x600.png" width="100px" link="https://www.credly.com/badges/fa444f52-e5d0-4479-9862-c89d68ca8d83/public_url" alt="Microsoft Certified: Power Platform App Maker Associate" >}}
 
 **Power Platform App Maker Associate**  
 Microsoft  
-September 15 2022 - September 15 2024  
+September 15 2022 - September 15 2025  
 
 {{< img-custom src="/img/resume/azure-data-engineer-associate-600x600.png" width="100px" link="https://www.credly.com/badges/1517a2cc-b867-4e98-bbd9-0d961e8fb32a" alt="Google Professional Data Engineer Certification" >}}
 
 **Azure Data Engineer Associate**  
 Microsoft  
-July 29 2022 - July 29 2024
+July 29 2022 - July 29 2025
