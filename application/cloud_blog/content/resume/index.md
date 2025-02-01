@@ -18,7 +18,7 @@ Please contact me on LinkedIn for a more detailed resume.
 ---
 ## Core Skills
 ---
-Data Engineering
+Data and Analytics Engineering
 
 Software Engineering
 
@@ -46,11 +46,11 @@ Cloud/Platform/Site Reliability Engineering
 ---
 ## Employment History
 ---
-#### Senior Engineer - Security Data
+#### Senior Data Engineer - Cyber, Security and Resilience
 Woolworths Group \
 August 2023 - Present
 
-Engineering position. Focus on technical delivery for cyber security data technologies, information management, and advanced data analytics capabilities.
+Engineering position. Technical delivery for data technologies, information management, and advanced data analytics capabilities relating to cyber, security and resilience for the entire Woolworths Group.
 
 #### Technology Lead - Advanced Analytics
 Endeavour Group \
@@ -58,7 +58,7 @@ April 2023 - August 2023
 
 Leading individual contributor. Focus on leading technical design/build of end-to-end data products and mentoring junior engineers within the Advanced Analytics practice.
 
-#### Data Engineer
+#### Data Engineer - endeavourX
 Endeavour Group \
 November 2022 - April 2023
 
@@ -70,7 +70,7 @@ May 2022 - November 2022
 
 Consulting position. Focus on delivering cost-effective, modern data platforms and business applications with Azure Synapse, Databricks, and Microsoft Power Platform.
 
-#### Innovation - Data Engineer
+#### Data Engineer - Innovation Lab
 HUB24 Limited \
 August 2021 - May 2022
 
