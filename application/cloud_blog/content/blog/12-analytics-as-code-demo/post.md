@@ -2,7 +2,7 @@
 title = 'Exploring "Analytics as Code"'
 subtitle = 'From database to dashboard with no BI tool in sight'
 date = '2024-02-25'
-draft = false
+draft = true
 show_date = true
 tags = ["data analysis", "data engineering", "duckdb", "malloy", "notebooks"]
 show_title = true
