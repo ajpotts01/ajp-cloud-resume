@@ -1,11 +1,11 @@
 ### Site settings
 baseURL: "https://ajpcloudblog.com/"
 languageCode: "en-au"
-title: "AJP Cloud Blog"
+title: "ajpotts.online - blog and digital resume"
 
 params:
-  title: "AJP Cloud Blog"
-  description: "Resume and blog for cloud technologist in Sydney, Australia"
+  title: "ajpotts.online - blog and digital resume"
+  description: "Digital resume and blog for cloud technologist in Sydney, Australia"
   DateFormat: "January 1, 2000"
   defaultTheme: light
   disableThemeToggle: true
